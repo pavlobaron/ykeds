@@ -1,0 +1,11 @@
+{:http {:host "127.0.0.1" :port 8217}
+ :searches [{:url "http://www.helles-koepfchen.de/?suche="
+             :pattern #"&url=(.*?)&"}
+            {:url "http://www.fragfinn.de/kinderliste/suche?query="
+             :pattern #"&websiteDeeplinkUrl=(.*?)&"}]
+ :texts ["etc/lehrplan.txt"]
+ :topics 5
+ :random-words 3
+ :stop-words ["etc/stopwords.txt"]
+ :reload-interval (* 24 60 60 1000)
+ :title "Jeden Tag ein bisschen schlauer"}
