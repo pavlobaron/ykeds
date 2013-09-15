@@ -27,8 +27,9 @@
          (try
            (def content (html/html-resource (java.net.URL. link)))
            (def title (html/select content [:title]))
-           (def text (clojure.string/join " " (html/texts (html/select content [:body]))))
-           (def teaser (clojure.string/replace (re-find #"\s[\w.,: \n]{128,256}+\s" text) #"\s+" " "))
+           (def raw-text (clojure.string/join " " (html/texts (html/select content [:body]))))
+           (def text (clojure.string/replace raw-text #"\s+" " "))
+           (def teaser (re-find #"\s[\w.,:\s]{64,256}+\s" text))
            {:url link :header (:content (nth title 0)) :text (str "..." teaser "...")}
            (catch Throwable e
              (println "Error loading page content: " (. e getMessage)))))
