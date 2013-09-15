@@ -36,8 +36,14 @@
 
 ;; timer
 (defn- reload []
-  (def phrase (text/random-phrase (texts) (random-words) (stop-words)))
-  (swap! links (constantly (search/search phrase (searches) (topics)))))
+  (try
+    (while (= 0 (count @links))
+      (def phrase (text/random-phrase (texts) (random-words) (stop-words)))
+      (println "Random phrase: " phrase)
+      (swap! links (constantly (search/search phrase (searches) (topics))))
+      (println "Reading list: " @links))
+    (catch Throwable e
+      (println "Error refreshing reading list: " (. e getMessage)))))
 
 ;; bootstrap
 (defn -main [& args]

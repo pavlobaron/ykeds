@@ -22,14 +22,21 @@
   (def links (for [i (range max-links)
                    :let [r (rand-int (count all-links))]]
                (nth all-links r)))
-
   (map (fn [link]
          (try
            (def content (html/html-resource (java.net.URL. link)))
            (def title (html/select content [:title]))
-           (def raw-text (clojure.string/join " " (html/texts (html/select content [:body]))))
-           (def text (clojure.string/replace raw-text #"\s+" " "))
-           (def teaser (re-find #"\s[\w.,:\s]{64,256}+\s" text))
+           (def text
+             (clojure.string/join " "
+                                  (map #(clojure.string/replace % #"\s+" " ")
+                                       (html/texts (html/select content
+                                                                #{[:div]
+                                                                  [:pre]
+                                                                  [:p]
+                                                                  [:li]
+                                                                  [:td]
+                                                                  [:font]})))))
+           (def teaser (re-find #"\s[\p{N}\p{L}.,:\s\"\-]{64,256}+\s" text))
            {:url link :header (:content (nth title 0)) :text (str "..." teaser "...")}
            (catch Throwable e
              (println "Error loading page content: " (. e getMessage)))))
