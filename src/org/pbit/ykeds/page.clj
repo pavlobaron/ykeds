@@ -4,7 +4,7 @@
 (defn main-page [links title]
   (html
    [:head
-    [:title title]]
+    [:title (str "ykeds - " title)]]
    [:body
     [:table {:width "100%"}
      [:tr
