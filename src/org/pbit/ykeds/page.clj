@@ -11,5 +11,5 @@
       [:td {:width "100%"} (interpose '([:br] [:br]) (map (fn [link]
                                                             `([:a {:href ~(:url link)} ~(:header link)]
                                                                 [:br]
-                                                                  [:pre ~(:text link)]))
+                                                                  [:span ~(:text link)]))
                                                           links))]]]]))
