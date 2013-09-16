@@ -24,6 +24,7 @@
 
 ;; state
 (def links (atom nil))
+(def doit (atom true))
 
 ;; web server
 (defroutes app-routes
@@ -37,11 +38,13 @@
 ;; timer
 (defn- reload []
   (try
-    (while (= 0 (count @links))
+    (swap! doit (constantly true))
+    (while @doit
       (def phrase (text/random-phrase (texts) (random-words) (stop-words)))
       (println "Random phrase: " phrase)
       (swap! links (constantly (search/search phrase (searches) (topics))))
-      (println "Reading list: " @links))
+      (println "Reading list: " @links)
+      (swap! doit (constantly (= 0 (count @links)))))
     (catch Throwable e
       (println "Error refreshing reading list: " (. e getMessage)))))
 
