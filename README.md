@@ -64,7 +64,7 @@ Of course, it's work in progress. I didn't yet implement several parts I want to
 * I need to invest more into collecting and showing news. I'm using a school curriculum to pick relevant topics, which is good as a general source, but probably not good to catch the news. I totally rely on the search engines to show news on the very first hit list page, but since I randomy pick links to follow, I still might exclude news
 * The UI is currently no UI - it's good old plain HTML. As agreed with my kids, they're cool about it, but probably not yours if you want to use it. I need to invest some brain into design, but surely will fail not being a designer. Any ideas are welcome
 * Everything relies on the quality of topic texts. I need to toy with the idea how to make topic explicitly configurable
-* There are several bugs and spots where the quality has to improve, for example teaser. I need to play more with extracting a teaser from the body of the target page. Currently, I'm simply looking for some text of length between 64 and 256 characters. Chances are that it's even a piece of JavaScript code. This part is very buggy yet. Also, there are bugs in collecting the random recommended links, such as duplicates. Search engines I'm using can return same target links, and can have multiple links to the same destination as well. Also, my own implementaiton doesn't yet exclude duplicates
+* Randomness in picking topics as well as teaser extraction are yet somewhat suboptimal and need some improvement.
 * There is no logging yet I've mentioned earlier, but I don't see it as the highest priority yet
 
 ## Credit

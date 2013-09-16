@@ -3,16 +3,16 @@
 
 (defn search [q searches topics]
   (def pred (html/pred #(html/attr-values % :href)))
-  (def all-links (flatten (map (fn [s]
-                             (def content (html/html-resource (java.net.URL. (str (:url s) q))))
-                             (def nodes (html/select content [pred]))
-                             (map (fn [r] (java.net.URLDecoder/decode (nth r 1)))
-                                  (filter (fn [ele] (not (nil? ele)))
-                                   (map (fn [node]
-                                          (def h (:href (:attrs node)))
-                                          (re-find (:pattern s) h))
-                                    nodes))))
-                               searches)))
+  (def all-links (distinct (flatten (map (fn [s]
+                                           (def content (html/html-resource (java.net.URL. (str (:url s) q))))
+                                           (def nodes (html/select content [pred]))
+                                           (map (fn [r] (java.net.URLDecoder/decode (nth r 1)))
+                                                (filter (fn [ele] (not (nil? ele)))
+                                                        (map (fn [node]
+                                                               (def h (:href (:attrs node)))
+                                                               (re-find (:pattern s) h))
+                                                             nodes))))
+                                         searches))))
   (def max-links (if (< (count all-links) topics)
                    (count all-links)
                    topics))
@@ -40,4 +40,4 @@
            {:url link :header (:content (nth title 0)) :text (str "..." teaser "...")}
            (catch Throwable e
              (println "Error loading page content: " (. e getMessage)))))
-       links))
+       (distinct links)))
