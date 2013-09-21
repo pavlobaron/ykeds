@@ -6,13 +6,18 @@
    [:head
     [:title (str "ykeds - " title)]]
    [:body
-    [:table {:width "100%"}
+    [:table {:style "background:url(image/ykeds-bk.jpg) no-repeat left top; width: 700px heigth:974px;"}
+     [:tr [:td {:colspan 3 :height 200} [:br]]]
      [:tr
-      [:td {:width "100%"} (interpose '([:br] [:br]) (map (fn [link]
-                                                            `([:a {:href ~(:url link)} ~(:header link)]
-                                                                [:br]
-                                                                  [:span ~(:text link)]))
-                                                          links))]]]]))
+      [:td {:width 200} [:br]]
+      [:td {:width 350 :height 574}
+       (interpose '([:br] [:br]) (map (fn [link]
+                                        `([:a {:href ~(:url link)} ~(:header link)]
+                                            [:br]
+                                              [:span ~(:text link)]))
+                                      links))]
+      [:td {:width 150} [:br]]]
+     [:tr [:td {:colspan 3 :height 200} [:br]]]]]))
 
 (defn target-page [target]
   (html

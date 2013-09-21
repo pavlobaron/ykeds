@@ -66,7 +66,6 @@ Of course, it's work in progress. I didn't yet implement several parts I want to
 
 * currently, there is no own semantics in picking topics. I rely on search engines to decide what to read based on a random trigram. Ideally, own crawlers should do the job gathering information, applying some ML/NLP algorithms to make decisions on what's relevant. Since search engines I'm using are carefuly operated and target pages are being manually selected to really be kid safe, t's fair enough for now
 * I need to invest more into collecting and showing news. I'm using a slightly modified school curriculum to pick relevant topics, which is good as a general source, but probably not good to catch the news. I totally rely on the search engines to show news on the very first hit list page, but since I randomy pick links to follow, I still might exclude news
-* The UI is currently no UI - it's good old plain HTML. As agreed with my kids, they're cool about it, but probably not yours if you want to use it. I need to invest some brain into design, but surely will fail not being a designer. Any ideas are welcome
 * Everything relies on the quality of topic texts. I need to toy with the idea how to make topic explicitly configurable
 * Randomness in picking topics as well as teaser extraction are yet somewhat suboptimal and need some improvement
 
