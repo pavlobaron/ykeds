@@ -13,3 +13,9 @@
                                                                 [:br]
                                                                   [:span ~(:text link)]))
                                                           links))]]]]))
+
+(defn target-page [target]
+  (html
+   [:head
+    [:meta {:http-equiv "refresh"
+            :content (str "0; " target)}]]))

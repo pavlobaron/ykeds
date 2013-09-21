@@ -37,7 +37,9 @@
                                                                   [:td]
                                                                   [:font]})))))
            (def teaser (re-find #"\s[\p{N}\p{L}.,:\s\"\-]{64,256}+\s" text))
-           {:url link :header (:content (nth title 0)) :text (str "..." teaser "...")}
+           {:url (str "/go?target=" link)
+            :header (:content (nth title 0))
+            :text (str "..." teaser "...")}
            (catch Throwable e
              (println "Error loading page content: " (. e getMessage)))))
        (distinct links)))

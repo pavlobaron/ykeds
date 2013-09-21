@@ -8,5 +8,6 @@
                  [com.ifesdjeen/utils "0.3.0"]
                  [org.clojure/tools.cli "0.2.2"]
                  [overtone/at-at "1.2.0"]
-                 [hiccup "1.0.4"]]
+                 [hiccup "1.0.4"]
+                 [com.taoensso/timbre "2.6.1"]]
   :main org.pbit.ykeds.main)
