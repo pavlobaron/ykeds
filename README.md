@@ -69,7 +69,6 @@ Of course, it's work in progress. I didn't yet implement several parts I want to
 * The UI is currently no UI - it's good old plain HTML. As agreed with my kids, they're cool about it, but probably not yours if you want to use it. I need to invest some brain into design, but surely will fail not being a designer. Any ideas are welcome
 * Everything relies on the quality of topic texts. I need to toy with the idea how to make topic explicitly configurable
 * Randomness in picking topics as well as teaser extraction are yet somewhat suboptimal and need some improvement
-* There is no logging yet I've mentioned earlier, but I don't see it as the highest priority yet
 
 ## Credit
 
