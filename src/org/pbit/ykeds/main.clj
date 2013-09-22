@@ -54,7 +54,9 @@
     (while @doit
       (def phrase (text/random-phrase (texts) (random-words) (stop-words)))
       (info (str "Reloading reading list for random phrase: " phrase))
-      (swap! links (constantly (search/search phrase (searches) (topics))))
+      (swap! links (constantly (search/search phrase
+                                              (searches)
+                                              (topics))))
       (info (apply str "Reloaded reading list: " @links))
       (swap! doit (constantly (= 0 (count @links)))))
     (catch Throwable e

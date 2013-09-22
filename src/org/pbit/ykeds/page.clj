@@ -12,13 +12,19 @@
       [:td {:width 200} [:br]]
       [:td {:width 350 :height 574 :valign "top"}
        (interpose '([:br] [:br]) (map (fn [link]
-                                        `([:a {:href ~(:url link)} ~(:header link)]
+                                        `([:a {:href ~(:url link)
+                                               :style "font-family: \"Trebuchet MS\",
+                                                       \"Helvetica\",
+                                                       \"Arial\", \"Verdana\", \"sans-serif\";
+                                                       font-size: 13px;
+                                                       color:#942"}
+                                           ~(:header link)]
                                           [:br]
                                           [:span {:style "font-family: \"Trebuchet MS\",
                                                           \"Helvetica\",
                                                           \"Arial\", \"Verdana\", \"sans-serif\";
                                                           font-size: 13px;"}
-                                                 ~(:text link)]))
+                                           ~(:text link)]))
                                       links))]
       [:td {:width 150} [:br]]]
      [:tr [:td {:colspan 3 :height 200} [:br]]]]]))
